@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +15,7 @@ class ContactCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 2.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -46,8 +48,8 @@ class ContactCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
                     style: const TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14.0
+                      color: Colors.grey,
+                      fontSize: 14.0
                     )
                   ),
                 )
@@ -62,7 +64,7 @@ class ContactCard extends StatelessWidget {
                 Text(
                   user.timestamp,
                   style: TextStyle(
-                    color: user.isRead ? Colors.grey : Colors.blue,
+                    color: user.isRead ? Colors.grey : Platform.isIOS ? Colors.blue : Colors.green,
                     fontSize: 16.0
                   )
                 ),
@@ -71,6 +73,7 @@ class ContactCard extends StatelessWidget {
                   children: [
                     if (user.unseenTexts > 0)
                       CircleAvatar(
+                        backgroundColor: Platform.isAndroid ? Colors.green : Colors.blue,
                         radius: 10.0,
                         child: Text(
                           "${user.unseenTexts}",

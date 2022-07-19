@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -16,18 +18,18 @@ class ChatList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       controller: scrollController,
-      itemCount: contactList.length + 2,
+      itemCount: Platform.isIOS ? contactList.length + 2 : contactList.length,
       separatorBuilder: (ctx, index) {
         return Divider(
           color: Colors.grey.shade200,
           thickness: 1.0,
-          indent: index == 0 ? 0.0 : 75.0,
+          indent: Platform.isIOS && index == 0 ? 0.0 : 75.0,
         );
       },
       itemBuilder: (ctx, index) {
-        if (index == 0) {
+        if (index == 0 && Platform.isIOS) {
           return const SearchBar();
-        } else if (index == 1) {
+        } else if (index == 1 && Platform.isIOS) {
           return Container(
             padding: const EdgeInsets.only(left: 28.0, top: 6.0, right: 28.0, bottom: 2.0),
             child: Row(
@@ -51,7 +53,7 @@ class ChatList extends StatelessWidget {
             )
           );
         } else {
-          final user = contactList[index - 2];
+          final user = contactList[Platform.isIOS ? index - 2 : index];
           return ContactCard(user: user);
         }
       },
