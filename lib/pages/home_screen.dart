@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../data/data.dart';
-
-import '../widgets/contact_card.dart';
-import '../widgets/search_bar.dart';
+import '../widgets/chat_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -66,47 +63,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         )
       ),
-      child: ListView.separated(
-        controller: _scrollController,
-        itemCount: contactList.length + 2,
-        separatorBuilder: (ctx, index) {
-          return Divider(
-            color: Colors.grey.shade200,
-            thickness: 1.0,
-            indent: index == 0 ? 0.0 : 75.0,
-          );
-        },
-        itemBuilder: (ctx, index) {
-          if (index == 1) {
-            return Container(
-              padding: const EdgeInsets.only(left: 28.0, top: 6.0, right: 28.0, bottom: 2.0),
-              child: Row(
-                children: const [
-                  Icon(
-                    CupertinoIcons.archivebox_fill,
-                    color: Colors.grey,
-                    size: 18.0
-                  ),
-                  SizedBox(
-                    width: 28.0,
-                  ),
-                  Text(
-                    "Archived",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold
-                    )
-                  )
-                ],
-              )
-            );
-          }
-          if (index == 0) {
-            return const SearchBar();
-          }
-          final user = contactList[index - 2];
-          return ContactCard(user: user);
-        },
+      child: ChatList(
+        scrollController: _scrollController,
       )
     );
   }
