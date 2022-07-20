@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import './home_screen.dart';
+import './calls_screen_ios.dart';
 
 class NavScreen extends StatefulWidget {
 
@@ -15,7 +16,7 @@ class _NavScreenState extends State<NavScreen> {
 
   final _pages = [
     CupertinoPageScaffold(child: SizedBox.shrink()),
-    CupertinoPageScaffold(child: SizedBox.shrink()),
+    const CallsScreenIos(),
     CupertinoPageScaffold(child: SizedBox.shrink()),
     const HomeScreen(),
     CupertinoPageScaffold(child: SizedBox.shrink()),
