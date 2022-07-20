@@ -36,7 +36,7 @@ class _ChatScreenIosState extends State<ChatScreenIos> {
       navigationBar: CupertinoNavigationBar(
         backgroundColor: Colors.white,
         border: _scrollOffset < 200 ? const Border(bottom: BorderSide(color: Colors.transparent)) : Border(bottom: BorderSide(color: Colors.grey.shade300)),
-        padding: const EdgeInsetsDirectional.only(start: 2.0, end: 16.0, bottom: 0.0),
+        padding: const EdgeInsetsDirectional.only(start: 2.0, end: 16.0),
         middle: Text(
           _scrollOffset < 200 ? "" : "Chats",
           style: const TextStyle(

@@ -17,7 +17,7 @@ class CallsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final isIos = Platform.isIOS;
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 12.0),
+      padding: isIos ? const EdgeInsets.only(top: 0.0, left: 16.0, right: 16.0, bottom: 100.0) : const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
       itemCount: isIos ? calls.length + 1 : calls.length,
       separatorBuilder: ((ctx, index) {
         return isIos
@@ -202,6 +202,9 @@ class _SearchBar extends StatelessWidget {
             border: Border.all(color: CupertinoColors.lightBackgroundGray, width: 1.0),
             borderRadius: BorderRadius.circular(10.0),
           ),
+        ),
+        const SizedBox(
+          height: 10.0,
         ),
       ],
     );

@@ -17,7 +17,7 @@ class ChatList extends StatelessWidget {
   Widget build(BuildContext context) {
     final isIos = Platform.isIOS;
     return ListView.separated(
-      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+      padding: isIos ? const EdgeInsets.only(top: 0.0, left: 16.0, right: 16.0, bottom: 100.0) : const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
       controller: scrollController,
       itemCount: isIos ? chats.length + 2 : chats.length + 1,
       separatorBuilder: (ctx, index) {

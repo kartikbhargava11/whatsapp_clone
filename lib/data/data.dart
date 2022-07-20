@@ -1,6 +1,12 @@
 import '../models/user.dart';
 import '../models/chat.dart';
 import '../models/call.dart';
+import '../models/status.dart';
+
+final currentUser = User(
+    profilePhoto: "https://media.vanityfair.com/photos/551f1c62fa699a350cfdebbf/master/pass/leonardo-dicaprio-resort.jpg",
+    contactName: "Kartik Bhargava"
+  );
 
 final users = [
   User(
@@ -19,11 +25,11 @@ final users = [
   ),
   User(
     profilePhoto: "https://upload.wikimedia.org/wikipedia/commons/0/05/Sanjay_Dutt_snapped_promoting_his_film_%E2%80%98Bhoomi%E2%80%99.jpg",
-    contactName: "Dad",
+    contactName: "Sanju",
   ),
   User(
     profilePhoto: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Johnny_Depp_Deauville_2019.jpg/640px-Johnny_Depp_Deauville_2019.jpg",
-    contactName: "Jhonny Depp",
+    contactName: "Jhonny",
   ),
   User(
     profilePhoto: "https://pbs.twimg.com/profile_images/1383196364792680448/N8CdupEu_400x400.jpg",
@@ -102,6 +108,31 @@ final chats = [
     lastMessage: "G.O.A.T",
     isRead: false,
   ),
+  Chat(
+      user: users[5],
+      timestamp: "04:15 PM",
+      lastMessage: "My dog stepped on a bee",
+      isRead: false,
+      unseenTexts: 1
+  ),
+  Chat(
+    user: users[6],
+    timestamp: "Yesterday",
+    lastMessage: "No",
+    isRead: false,
+  ),
+  Chat(
+    user: users[7],
+    timestamp: "Monday",
+    lastMessage: "hahaha",
+    isRead: false,
+  ),
+  Chat(
+    user: users[8],
+    timestamp: "Sunday",
+    lastMessage: "G.O.A.T",
+    isRead: false,
+  ),
 ];
 
 final calls = [
@@ -132,5 +163,45 @@ final calls = [
     isAudioCall: false,
     isMissed: true
   ),
+];
 
+final recentUpdates = [
+  Status(
+    user: users[5],
+    timestamp: "22m ago",
+    isViewed: true,
+  ),
+  Status(
+    user: users[0],
+    timestamp: "32m ago",
+    isViewed: true,
+  ),
+  Status(
+    user: users[4],
+    timestamp: "1h ago",
+    isViewed: true,
+  ),
+  Status(
+    user: users[7],
+    timestamp: "1h ago",
+    isViewed: true,
+  ),
+  Status(
+    user: users[8],
+    timestamp: "2h ago",
+    isViewed: true,
+  )
+];
+
+final viewedUpdates = [
+  Status(
+    user: users[3],
+    timestamp: "20m ago",
+    isViewed: true,
+  ),
+  Status(
+    user: users[6],
+    timestamp: "4h ago",
+    isViewed: true,
+  ),
 ];
