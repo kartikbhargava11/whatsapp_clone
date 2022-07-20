@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import './home_screen.dart';
+import './chat_screen_ios.dart';
 import './calls_screen_ios.dart';
 
 class NavScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class _NavScreenState extends State<NavScreen> {
     CupertinoPageScaffold(child: SizedBox.shrink()),
     const CallsScreenIos(),
     CupertinoPageScaffold(child: SizedBox.shrink()),
-    const HomeScreen(),
+    const ChatScreenIos(),
     CupertinoPageScaffold(child: SizedBox.shrink()),
   ];
 

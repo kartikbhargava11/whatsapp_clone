@@ -21,10 +21,17 @@ class ChatList extends StatelessWidget {
       controller: scrollController,
       itemCount: isIos ? chats.length + 2 : chats.length + 1,
       separatorBuilder: (ctx, index) {
-        return Divider(
+        return isIos
+          ?
+        Divider(
           color: Colors.grey.shade200,
           thickness: 1.0,
-          indent: isIos && index == 0 ? 0.0 : 75.0,
+          indent: index == 0 ? 0.0 : 75.0,
+        )
+          :
+        const Divider(
+          color: Colors.transparent,
+          thickness: 0.0,
         );
       },
       itemBuilder: (ctx, index) {
@@ -48,7 +55,7 @@ class ChatList extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 16.0,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold
+                    fontWeight: FontWeight.w500
                   )
                 ),
                 const Spacer(),

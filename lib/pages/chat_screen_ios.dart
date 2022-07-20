@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import '../widgets/chat_list.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+class ChatScreenIos extends StatefulWidget {
+  const ChatScreenIos({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ChatScreenIos> createState() => _ChatScreenIosState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ChatScreenIosState extends State<ChatScreenIos> {
   late ScrollController _scrollController;
   var _scrollOffset = 0.0;
 

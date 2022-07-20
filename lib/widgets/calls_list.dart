@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -13,21 +15,29 @@ class CallsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isIos = Platform.isIOS;
     return ListView.separated(
       padding: const EdgeInsets.symmetric(horizontal:16.0, vertical: 12.0),
-      itemCount: calls.length + 1,
+      itemCount: isIos ? calls.length + 1 : calls.length,
       separatorBuilder: ((ctx, index) {
-        return Divider(
+        return isIos
+          ?
+        Divider(
           color: Colors.grey.shade300,
           thickness: 1.0,
           indent: 50.0,
+        )
+          :
+        const Divider(
+          color: Colors.transparent,
+          thickness: 0
         );
       }),
       itemBuilder: ((ctx, index) {
-        if (index == 0) {
+        if (index == 0 && isIos) {
           return const _SearchBar();
         }
-        final caller = calls[index - 1];
+        final caller = calls[isIos ? index - 1 : index];
         return _CallerCard(
           caller: caller
         );
@@ -44,6 +54,8 @@ class _CallerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isIos = Platform.isIOS;
+    final isAndroid = Platform.isAndroid;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -59,58 +71,98 @@ class _CallerCard extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 10.0),
-                child: Text(
+                child: isIos
+                  ?
+                Text(
                   "${caller.user.contactName} ${caller.numberOfCalls > 1 ?  '(${caller.numberOfCalls})' : ''}",
                   style: TextStyle(
                     fontSize: 14.0,
                     fontWeight: FontWeight.w500,
                     color: caller.isMissed ? Colors.red : Colors.black
                   )
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Row(
-                  children: [
-                    Icon(
-                      caller.isAudioCall ? Icons.phone : Icons.videocam,
-                      size: 14.0,
-                      color: Colors.grey,
-                    ),
-                    const SizedBox(
-                      width: 4.0,
-                    ),
-                    Text(
-                      caller.isMissed ? 'Missed' : caller.isIncomingCall ? 'Incoming' : 'Outgoing',
-                      style: const TextStyle(
-                        fontSize: 14.0,
-                        color: Colors.grey
-                      )
-                    ),
-                  ],
+                )
+                  :
+                Text(
+                  caller.user.contactName,
+                  style: const TextStyle(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w500,
+                  )
                 )
               ),
+              if(isIos)
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        caller.isAudioCall ? Icons.phone : Icons.videocam,
+                        size: 14.0,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        width: 4.0,
+                      ),
+                      Text(
+                        caller.isMissed ? 'Missed' : caller.isIncomingCall ? 'Incoming' : 'Outgoing',
+                        style: const TextStyle(
+                          fontSize: 14.0,
+                          color: Colors.grey
+                        )
+                      ),
+                    ],
+                  )
+                ),
+              if(isAndroid)
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        caller.isIncomingCall ? Icons.call_received : Icons.call_made,
+                        size: 14.0,
+                        color: caller.isMissed ? Colors.red : Colors.green,
+                      ),
+                      const SizedBox(
+                        width: 4.0,
+                      ),
+                      Text(
+                        caller.timestamp,
+                        style: const TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey
+                        )
+                      ),
+                    ],
+                  )
+                ),
             ],
           ),
         ),
-        Row(
-          children: [
-            Text(
+        if (isIos)
+          Row(
+            children: [
+              Text(
                 caller.timestamp,
                 style: const TextStyle(
                   color: Colors.grey,
                   fontSize: 14.0,
                 )
-            ),
-            const SizedBox(
-              width: 4.0,
-            ),
-            const Icon(
-              Icons.info_outline,
-              size: 18.0,
-            )
-          ],
-        ),
+              ),
+              const SizedBox(
+                width: 4.0,
+              ),
+              const Icon(
+                Icons.info_outline,
+                size: 18.0,
+              )
+            ],
+          ),
+        if (isAndroid)
+          Icon(
+            caller.isAudioCall ? Icons.phone : Icons.videocam,
+            color: Colors.green,
+          )
       ],
     );
   }

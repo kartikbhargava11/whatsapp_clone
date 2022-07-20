@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/chat_list.dart';
+import '../widgets/calls_list.dart';
 
-class ChatListScreen extends StatefulWidget {
-  const ChatListScreen({Key? key}) : super(key: key);
+class CallScreenAndroid extends StatefulWidget {
+  const CallScreenAndroid({Key? key}) : super(key: key);
 
   @override
-  State<ChatListScreen> createState() => _ChatListScreenState();
+  State<CallScreenAndroid> createState() => _CallScreenAndroidState();
 }
 
-class _ChatListScreenState extends State<ChatListScreen> {
+class _CallScreenAndroidState extends State<CallScreenAndroid> {
 
   final ScrollController _scrollController = ScrollController();
 
@@ -26,10 +26,10 @@ class _ChatListScreenState extends State<ChatListScreen> {
         backgroundColor: Colors.green,
         onPressed: () {},
         child: const Icon(
-          Icons.chat
+          Icons.phone_in_talk_outlined
         ),
       ),
-      body: ChatList(
+      body: CallsList(
         scrollController: _scrollController,
       ),
     );

@@ -121,5 +121,16 @@ final calls = [
     timestamp: "1:26 PM",
     isMissed: true
   ),
+  Call(
+    user: users[0],
+    timestamp: "11:26 AM",
+    isAudioCall: false
+  ),
+  Call(
+    user: users[4],
+    timestamp: "11:06 AM",
+    isAudioCall: false,
+    isMissed: true
+  ),
 
 ];

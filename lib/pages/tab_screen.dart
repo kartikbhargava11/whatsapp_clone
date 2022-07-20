@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import './chat_list_screen.dart';
+
+import './chat_screen_android.dart';
+import './call_screen_android.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({Key? key}) : super(key: key);
@@ -9,11 +11,11 @@ class TabScreen extends StatefulWidget {
 }
 
 class _TabScreenState extends State<TabScreen> {
-  final _pages = [
+  final _pages = const [
     Scaffold(),
-    ChatListScreen(),
+    ChatScreenAndroid(),
     Scaffold(),
-    Scaffold(),
+    CallScreenAndroid(),
   ];
 
 
