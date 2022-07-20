@@ -16,44 +16,54 @@ class ChatList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isIos = Platform.isIOS;
     return ListView.separated(
+      padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
       controller: scrollController,
-      itemCount: Platform.isIOS ? contactList.length + 2 : contactList.length,
+      itemCount: isIos ? contactList.length + 2 : contactList.length + 1,
       separatorBuilder: (ctx, index) {
         return Divider(
           color: Colors.grey.shade200,
           thickness: 1.0,
-          indent: Platform.isIOS && index == 0 ? 0.0 : 75.0,
+          indent: isIos && index == 0 ? 0.0 : 75.0,
         );
       },
       itemBuilder: (ctx, index) {
-        if (index == 0 && Platform.isIOS) {
+        if (index == 0 && isIos) {
           return const SearchBar();
-        } else if (index == 1 && Platform.isIOS) {
+        } else if (index == 1 && isIos || index == 0 && Platform.isAndroid) {
           return Container(
-            padding: const EdgeInsets.only(left: 28.0, top: 6.0, right: 28.0, bottom: 2.0),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 4.0),
             child: Row(
-              children: const [
+              children: [
                 Icon(
-                  CupertinoIcons.archivebox_fill,
-                  color: Colors.grey,
-                  size: 18.0
+                  isIos ? CupertinoIcons.archivebox_fill : Icons.archive_outlined,
+                  color: isIos ? Colors.grey : Colors.green,
+                  size: isIos ? 18.0 : 24.0
                 ),
-                SizedBox(
-                  width: 28.0,
+                const SizedBox(
+                  width: 32.0,
                 ),
-                Text(
+                const Text(
                   "Archived",
                   style: TextStyle(
+                    fontSize: 16.0,
                     color: Colors.black,
                     fontWeight: FontWeight.bold
+                  )
+                ),
+                const Spacer(),
+                Text(
+                  "2",
+                  style: TextStyle(
+                    color: isIos ? Colors.blue : Colors.green
                   )
                 )
               ],
             )
           );
         } else {
-          final user = contactList[Platform.isIOS ? index - 2 : index];
+          final user = contactList[isIos ? index - 2 : index - 1];
           return ContactCard(user: user);
         }
       },

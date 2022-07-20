@@ -17,12 +17,12 @@ class _NavScreenState extends State<NavScreen> {
     CupertinoPageScaffold(child: SizedBox.shrink()),
     CupertinoPageScaffold(child: SizedBox.shrink()),
     CupertinoPageScaffold(child: SizedBox.shrink()),
-    HomeScreen(),
+    const HomeScreen(),
     CupertinoPageScaffold(child: SizedBox.shrink()),
   ];
 
   final _icons = {
-    "Status": CupertinoIcons.asterisk_circle,
+    "Status": CupertinoIcons.time,
     "Calls": CupertinoIcons.phone,
     "Camera": CupertinoIcons.camera,
     "Chats": CupertinoIcons.chat_bubble_2_fill,

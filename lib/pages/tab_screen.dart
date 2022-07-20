@@ -40,7 +40,7 @@ class _TabScreenState extends State<TabScreen> {
               ),
             ),
           ],
-          backgroundColor: Colors.green[600],
+          backgroundColor: Colors.green[500],
           titleTextStyle: const TextStyle(
             color: Colors.white,
             fontSize: 20.0,

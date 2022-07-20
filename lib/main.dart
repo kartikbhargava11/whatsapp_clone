@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       home: NavScreen(),
     )
       :
-    MaterialApp(
+    const MaterialApp(
       home: TabScreen(),
     );
   }

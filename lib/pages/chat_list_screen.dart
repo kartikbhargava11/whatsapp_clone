@@ -11,7 +11,7 @@ class ChatListScreen extends StatefulWidget {
 
 class _ChatListScreenState extends State<ChatListScreen> {
 
-  late ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
@@ -29,11 +29,8 @@ class _ChatListScreenState extends State<ChatListScreen> {
           Icons.chat
         ),
       ),
-      body: Container(
-        margin: const EdgeInsets.only(top: 12.0),
-        child: ChatList(
-          scrollController: _scrollController,
-        ),
+      body: ChatList(
+        scrollController: _scrollController,
       ),
     );
   }
