@@ -1,16 +1,24 @@
-# whatsapp_clone
+# WhatsApp Clone
 
-A new Flutter project.
+Using Flutter to develop WhatsApp for iOS and Android
 
-## Getting Started
+## Screenshots
 
-This project is a starting point for a Flutter application.
+Chat Screen (iOS)
 
-A few resources to get you started if this is your first Flutter project:
+![iOS Chat](./assets/images/ios-chats.png?raw=true "iOS Chat")
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Status Screen (iOS)
+
+![iOS Status](./assets/images/ios-status.png?raw=true "iOS Status")
+
+
+Calls Screen (Android)
+
+![Android Calls](./assets/images/android-calls.png?raw=true "Android Calls")
+
+
+Chat Screen (Android)
+
+![Android Chat](./assets/images/android-chat.png?raw=true "Android Chat")
