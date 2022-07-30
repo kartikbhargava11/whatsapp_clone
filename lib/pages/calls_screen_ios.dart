@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../widgets/calls_list.dart';
 
+import '../data/data.dart';
+
+enum Calling {
+  all,
+  missed
+}
+
 
 class CallsScreenIos extends StatefulWidget {
   const CallsScreenIos({Key? key}) : super(key: key);
@@ -14,6 +21,8 @@ class CallsScreenIos extends StatefulWidget {
 class _CallsScreenIosState extends State<CallsScreenIos> {
   late ScrollController _scrollController;
   var _scrollOffset = 0.0;
+  Calling _selectedSegment = Calling.all;
+  var _showOnlyMissed = false;
 
   @override
   void initState() {
@@ -48,6 +57,41 @@ class _CallsScreenIosState extends State<CallsScreenIos> {
             )
           ),
         ),
+        middle: CupertinoSlidingSegmentedControl(
+          onValueChanged: (Calling? value) {
+            if (value != null) {
+              if (value == Calling.missed) {
+                _showOnlyMissed = true;
+              } else {
+                _showOnlyMissed = false;
+              }
+              setState(() {
+                _selectedSegment = value;
+              });
+            }
+          },
+          groupValue: _selectedSegment,
+          children: const {
+            Calling.all: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              child: Text(
+                "All",
+                style: TextStyle(
+                  fontSize: 14.0
+                )
+              ),
+            ),
+            Calling.missed: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 5.0),
+              child: Text(
+                "Missed",
+                style: TextStyle(
+                  fontSize: 14.0
+                )
+              ),
+            )
+          },
+        ),
         trailing: GestureDetector(
           onTap: () {},
           child: const Icon(
@@ -59,6 +103,7 @@ class _CallsScreenIosState extends State<CallsScreenIos> {
       ),
       child: CallsList(
         scrollController: _scrollController,
+        calls: _showOnlyMissed ? missedCalls : calls,
       ),
     );
   }

@@ -172,8 +172,8 @@ class _StatusScreenIosState extends State<StatusScreenIos> {
             sliver: SliverToBoxAdapter(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
+                children: const [
+                  Text(
                     "Status",
                     style: TextStyle(
                       fontSize: 28.0,
@@ -181,25 +181,10 @@ class _StatusScreenIosState extends State<StatusScreenIos> {
                       letterSpacing: -1.2,
                     )
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 10.0,
                   ),
-                  CupertinoTextField(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
-                    placeholder: "Search",
-                    prefix: const Padding(
-                      padding: EdgeInsets.only(left: 10.0),
-                      child: Icon(
-                        CupertinoIcons.search,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: CupertinoColors.extraLightBackgroundGray,
-                      border: Border.all(color: CupertinoColors.lightBackgroundGray, width: 1.0),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
+                  CupertinoSearchTextField(),
                 ],
               ),
             ),

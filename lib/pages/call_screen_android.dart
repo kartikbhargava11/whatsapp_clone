@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../widgets/calls_list.dart';
 
+import '../data/data.dart';
+
 class CallScreenAndroid extends StatefulWidget {
   const CallScreenAndroid({Key? key}) : super(key: key);
 
@@ -31,6 +33,7 @@ class _CallScreenAndroidState extends State<CallScreenAndroid> {
       ),
       body: CallsList(
         scrollController: _scrollController,
+        calls: calls,
       ),
     );
   }

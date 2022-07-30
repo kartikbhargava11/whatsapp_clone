@@ -3,13 +3,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../data/data.dart';
+
 
 import '../models/call.dart';
 
 class CallsList extends StatelessWidget {
+  final List<Call> calls;
   final ScrollController scrollController;
   const CallsList({
+    required this.calls,
     required this.scrollController,
     Key? key}) : super(key: key);
 
@@ -175,8 +177,8 @@ class _SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
+      children: const [
+        Text(
           "Calls",
           style: TextStyle(
             fontSize: 28.0,
@@ -184,26 +186,11 @@ class _SearchBar extends StatelessWidget {
             letterSpacing: -1.2,
           )
         ),
-        const SizedBox(
+        SizedBox(
           height: 10.0,
         ),
-        CupertinoTextField(
-          padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
-          placeholder: "Search",
-          prefix: const Padding(
-            padding: EdgeInsets.only(left: 10.0),
-            child: Icon(
-              CupertinoIcons.search,
-              color: Colors.grey,
-            ),
-          ),
-          decoration: BoxDecoration(
-            color: CupertinoColors.extraLightBackgroundGray,
-            border: Border.all(color: CupertinoColors.lightBackgroundGray, width: 1.0),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-        ),
-        const SizedBox(
+        CupertinoSearchTextField(),
+        SizedBox(
           height: 10.0,
         ),
       ],

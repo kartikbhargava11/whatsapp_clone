@@ -165,6 +165,10 @@ final calls = [
   ),
 ];
 
+List<Call> get missedCalls {
+  return calls.where((element) => element.isMissed).toList();
+}
+
 final recentUpdates = [
   Status(
     user: users[5],
