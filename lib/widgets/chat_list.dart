@@ -184,7 +184,7 @@ class _SearchBar extends StatelessWidget {
         const Text(
           "Chats",
           style: TextStyle(
-            fontSize: 28.0,
+            fontSize: 32.0,
             fontWeight: FontWeight.bold,
             letterSpacing: -1.2,
           )

@@ -181,7 +181,7 @@ class _SearchBar extends StatelessWidget {
         Text(
           "Calls",
           style: TextStyle(
-            fontSize: 28.0,
+            fontSize: 32.0,
             fontWeight: FontWeight.bold,
             letterSpacing: -1.2,
           )
